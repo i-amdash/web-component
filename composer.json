@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "landmark/web-component",
+    "name": "landmark/landmark-web-component",
     "type": "library",
     "description": "A reusable Laravel Livewire contact form component",
     "keywords": ["laravel", "framework", "web-component"],
