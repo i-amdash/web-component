@@ -1,35 +1,50 @@
-# Laravel Livewire Contact Form Package
+# Landmark Web Component - Laravel Livewire Contact Form
 
-A reusable, customizable contact form component for Laravel applications using Livewire.
+A reusable Laravel Livewire contact form component that can be easily integrated into any Laravel application.
 
 ## Features
 
-- 🚀 Easy installation and setup
-- 🎨 Multiple themes (Default, Dark, Minimal, Bootstrap)
-- 📧 Multiple submission handlers (Log, Email, Database, Webhook, Custom)
-- ✅ Built-in validation
-- 🔧 Highly customizable
+- 🚀 Easy integration with Laravel/Livewire applications
+- 🎨 Multiple themes (Default, Bootstrap, Tailwind)
+- ⚡ Real-time validation
+- 📧 Multiple submission handlers (email, database, webhook, custom)
+- 🔧 Highly configurable
+- � Event-driven architecture
 - 📱 Responsive design
-- 🎭 Event-driven architecture
 
 ## Installation
 
-### Step 1: Install via Composer
+Install the package via Composer:
 
 ```bash
-composer require yourvendor/livewire-contact-form
+composer require landmark/landmark-web-component
 ```
 
-### Step 2: Publish Configuration (Optional)
+### Laravel Auto-Discovery
 
-```bash
-php artisan vendor:publish --provider="YourVendor\LivewireContactForm\LivewireContactFormServiceProvider" --tag="config"
+The package will automatically register itself. If you have auto-discovery disabled, add the service provider to your `config/app.php`:
+
+```php
+'providers' => [
+    // ...
+    Landmark\LandmarkWebComponent\LandmarkWebComponentServiceProvider::class,
+],
 ```
 
-### Step 3: Publish Views (Optional)
+### Publish Configuration (Optional)
+
+Publish the configuration file to customize the component:
 
 ```bash
-php artisan vendor:publish --provider="YourVendor\LivewireContactForm\LivewireContactFormServiceProvider" --tag="views"
+php artisan vendor:publish --tag=landmark-web-component-config
+```
+
+### Publish Views (Optional)
+
+Publish the views if you want to customize the component appearance:
+
+```bash
+php artisan vendor:publish --tag=landmark-web-component-views
 ```
 
 ## Quick Start
@@ -39,15 +54,20 @@ php artisan vendor:publish --provider="YourVendor\LivewireContactForm\LivewireCo
 Add the component to any Blade template:
 
 ```blade
-@livewire('contact-form')
+<livewire:landmark-contact-form />
 ```
 
 ### With Custom Options
 
 ```blade
-@livewire('contact-form', [
-    'theme' => 'dark',
-    'titleText' => 'Get In Touch',
+<livewire:landmark-contact-form 
+    :theme="'bootstrap'"
+    :submit-text="'Get In Touch'"
+    :title-text="'Contact Our Team'"
+    :show-title="true"
+    :redirect-after-submit="'/thank-you'"
+/>
+```
     'submitText' => 'Send Now',
     'showTitle' => true,
     'redirectAfterSubmit' => '/thank-you'
